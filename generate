@@ -1,0 +1,3 @@
+#!/bin/bash
+xjc -mark-generated -wsdl -d src/main/java wsdl
+

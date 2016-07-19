@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.arpnetworking.build</groupId>
+    <artifactId>arpnetworking-parent-pom</artifactId>
+    <version>1.0.25</version>
+    <relativePath />
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.arpnetworking.onvif</groupId>
+  <artifactId>onvif</artifactId>
+  <packaging>jar</packaging>
+  <name>ONVIF library</name>
+  <description>ONVIF library built from WSDLs</description>
+  <url>https://github.com/BrandonArp/onvif-java</url>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>brandonarp</id>
+      <email>brandonarp@gmail.com</email>
+      <organization>Arp Networking</organization>
+      <organizationUrl>http://www.arpnetworking.com</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git@github.com:BrandonArp/onvif-java.git</connection>
+    <developerConnection>scm:git:git@github.com:BrandonArp/onvif-java.git</developerConnection>
+    <url>https://github.com/BrandonArp/onvif-java</url>
+    <tag>HEAD</tag>
+  </scm>
+  <properties>
+    <jaxb2-version>2.2</jaxb2-version>
+  </properties>
+
+  <build>
+    <plugins>
+      <!-- Enable Inherited Plugins -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.rimerosolutions.maven.plugins</groupId>
+        <artifactId>wrapper-maven-plugin</artifactId>
+        <inherited>false</inherited>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <version>${jaxb2-version}</version>
+        <executions>
+          <execution>
+            <id>xjc</id>
+            <goals>
+              <goal>xjc</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <sourceType>WSDL</sourceType>
+          <sources>
+            <source>wsdl</source>
+          </sources>
+          <generateEpisode>false</generateEpisode>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
